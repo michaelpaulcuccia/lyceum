@@ -1,0 +1,98 @@
+// schema.prisma
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id          Int          @id @default(autoincrement())
+  name        String
+  email       String       @unique
+  location    String?
+  bio         String?
+  createdAt   DateTime     @default(now())
+  books       UserBook[]   @relation("UserBooks")
+  groups      UserGroup[]
+  createdEvents Event[]   @relation("UserCreatedEvents", fields: [createdEventsId], references: [id])
+  createdEventsId Int?
+}
+
+model Book {
+  id          Int          @id @default(autoincrement())
+  title       String
+  author      String
+  genre       String
+  description String?
+  coverImage  String?
+  userBooks   UserBook[]  @relation("BookUserBooks")
+}
+
+model Group {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String?
+  location    String?
+  createdBy   User        @relation(fields: [createdById], references: [id])
+  createdById Int
+  createdAt   DateTime    @default(now())
+  users       UserGroup[]
+  events      GroupEvent[]
+}
+
+model Event {
+  id          Int         @id @default(autoincrement())
+  name        String
+  description String?
+  date        DateTime
+  location    String?
+  createdBy   User        @relation(fields: [createdById], references: [id])
+  createdById Int
+  createdAt   DateTime    @default(now())
+  attendees   EventAttendee[]
+  groupEvents GroupEvent[]
+}
+
+model UserGroup {
+  id        Int      @id @default(autoincrement())
+  user     User     @relation(fields: [userId], references: [id])
+  userId   Int
+  group    Group    @relation(fields: [groupId], references: [id])
+  groupId  Int
+  joinedAt DateTime @default(now())
+}
+
+model UserBook {
+  id          Int         @id @default(autoincrement())
+  user        User        @relation("UserBooks", fields: [userId], references: [id])
+  userId      Int
+  book        Book        @relation("BookUserBooks", fields: [bookId], references: [id])
+  bookId      Int
+  status      String
+  borrowedBy  User?       @relation("BorrowedBooks", fields: [borrowedById], references: [id])
+  borrowedById Int?
+  borrowedAt  DateTime?
+  dueDate     DateTime?
+}
+
+model GroupEvent {
+  id        Int     @id @default(autoincrement())
+  group    Group   @relation(fields: [groupId], references: [id])
+  groupId  Int
+  event    Event   @relation(fields: [eventId], references: [id])
+  eventId  Int
+}
+
+model EventAttendee {
+  id        Int     @id @default(autoincrement())
+  user     User    @relation(fields: [userId], references: [id])
+  userId   Int
+  event    Event   @relation(fields: [eventId], references: [id])
+  eventId  Int
+  status   String
+  createdAt DateTime @default(now())
+}
