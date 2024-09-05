@@ -16,10 +16,9 @@ model User {
   location    String?
   bio         String?
   createdAt   DateTime     @default(now())
-  books       UserBook[]   @relation("UserBooks")
-  groups      UserGroup[]
-  createdEvents Event[]   @relation("UserCreatedEvents", fields: [createdEventsId], references: [id])
-  createdEventsId Int?
+  books       Book[]       @relation("UserBooks")
+  userGroups  UserGroup[]
+  createdEvents Event[]   @relation("UserCreatedEvents")
 }
 
 model Book {
@@ -29,7 +28,8 @@ model Book {
   genre       String
   description String?
   coverImage  String?
-  userBooks   UserBook[]  @relation("BookUserBooks")
+  owner       User        @relation("UserBooks", fields: [ownerId], references: [id])
+  ownerId     Int
 }
 
 model Group {
@@ -37,11 +37,8 @@ model Group {
   name        String
   description String?
   location    String?
-  createdBy   User        @relation(fields: [createdById], references: [id])
-  createdById Int
-  createdAt   DateTime    @default(now())
   users       UserGroup[]
-  events      GroupEvent[]
+  events      Event[]
 }
 
 model Event {
@@ -50,11 +47,10 @@ model Event {
   description String?
   date        DateTime
   location    String?
-  createdBy   User        @relation(fields: [createdById], references: [id])
+  createdBy   User        @relation("UserCreatedEvents", fields: [createdById], references: [id])
   createdById Int
-  createdAt   DateTime    @default(now())
-  attendees   EventAttendee[]
-  groupEvents GroupEvent[]
+  group       Group       @relation(fields: [groupId], references: [id])
+  groupId     Int
 }
 
 model UserGroup {
@@ -64,35 +60,4 @@ model UserGroup {
   group    Group    @relation(fields: [groupId], references: [id])
   groupId  Int
   joinedAt DateTime @default(now())
-}
-
-model UserBook {
-  id          Int         @id @default(autoincrement())
-  user        User        @relation("UserBooks", fields: [userId], references: [id])
-  userId      Int
-  book        Book        @relation("BookUserBooks", fields: [bookId], references: [id])
-  bookId      Int
-  status      String
-  borrowedBy  User?       @relation("BorrowedBooks", fields: [borrowedById], references: [id])
-  borrowedById Int?
-  borrowedAt  DateTime?
-  dueDate     DateTime?
-}
-
-model GroupEvent {
-  id        Int     @id @default(autoincrement())
-  group    Group   @relation(fields: [groupId], references: [id])
-  groupId  Int
-  event    Event   @relation(fields: [eventId], references: [id])
-  eventId  Int
-}
-
-model EventAttendee {
-  id        Int     @id @default(autoincrement())
-  user     User    @relation(fields: [userId], references: [id])
-  userId   Int
-  event    Event   @relation(fields: [eventId], references: [id])
-  eventId  Int
-  status   String
-  createdAt DateTime @default(now())
 }
