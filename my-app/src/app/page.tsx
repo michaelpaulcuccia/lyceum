@@ -2,13 +2,21 @@ import React from "react";
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-export default function page() {
-  async function getUsers() {
-    const users = await prisma.user.findMany();
-    console.log(users);
-  }
+async function getGroups() {
+  const groups = await prisma.group.findMany();
+  return groups;
+}
 
-  getUsers();
-
-  return <div>page</div>;
+export default async function Home() {
+  const groups = await getGroups();
+  console.log(groups);
+  return (
+    <main>
+      {groups.map((item, i) => (
+        <div key={i}>
+          <p>{item.name}</p>
+        </div>
+      ))}
+    </main>
+  );
 }
