@@ -1,12 +1,13 @@
 import React from "react";
 import { PrismaClient } from "@prisma/client";
-import type { Group } from "@prisma/client";
+import { GroupPrisma } from "./types/types";
 
 const prisma = new PrismaClient();
 
-async function getGroups(): Promise<Group[]> {
-  // Ensure the return type is 'group[]'
-  const groups = await prisma.group.findMany();
+async function getGroups(): Promise<GroupPrisma[]> {
+  const groups = await prisma.group.findMany({
+    // Remove include if you don't need related data
+  });
   return groups;
 }
 
@@ -16,9 +17,10 @@ export default async function Home() {
 
   return (
     <main>
-      {groups.map((item: Group, i: number) => (
+      {groups.map((item: GroupPrisma, i: number) => (
         <div key={i}>
           <p>{item.name}</p>
+          <p>{item.description}</p>
         </div>
       ))}
     </main>
