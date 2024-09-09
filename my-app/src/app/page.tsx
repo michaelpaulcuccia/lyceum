@@ -1,6 +1,6 @@
 import React from "react";
 import { PrismaClient } from "@prisma/client";
-import type { Group } from "@prisma/client"; // Import the 'group' type from Prisma
+import type { Group } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -16,16 +16,11 @@ export default async function Home() {
 
   return (
     <main>
-      {groups.map(
-        (
-          item: Group,
-          i: number // Explicitly define the type for 'item'
-        ) => (
-          <div key={i}>
-            <p>{item.name}</p>
-          </div>
-        )
-      )}
+      {groups.map((item: Group, i: number) => (
+        <div key={i}>
+          <p>{item.name}</p>
+        </div>
+      ))}
     </main>
   );
 }
