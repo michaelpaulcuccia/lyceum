@@ -5,7 +5,7 @@ export type GroupType = {
   name: string;
   description: string | null;
   location: string | null;
-  zipCode: string;
+  zipCode: string | null;
 };
 
 // Define additional types as needed
