@@ -1,6 +1,6 @@
-// types.ts
+// these types are used for data fetching, not to model data
 
-export type GroupPrisma = {
+export type GroupType = {
   id: number;
   name: string;
   description: string | null;
@@ -9,14 +9,14 @@ export type GroupPrisma = {
 };
 
 // Define additional types as needed
-export type UserGroup = {
+export type UserType = {
   id: number;
   userId: number;
   groupId: number;
   joinedAt: Date;
 };
 
-export type Event = {
+export type EventType = {
   id: number;
   name: string;
   description: string | null;

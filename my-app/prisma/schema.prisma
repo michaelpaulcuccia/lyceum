@@ -14,7 +14,7 @@ model User {
   name        String
   email       String       @unique
   location    String?
-  zipCode     String      @db.Char(5) // Zip code with exactly 5 characters
+  zipCode     String?      
   bio         String?
   createdAt   DateTime     @default(now())
   books       Book[]       @relation("UserBooks")
@@ -38,7 +38,7 @@ model Group {
   name        String
   description String?
   location    String?
-  zipCode     String      @db.Char(5) // Zip code with exactly 5 characters
+  zipCode     String?      
   users       UserGroup[]
   events      Event[]
 }
@@ -49,7 +49,7 @@ model Event {
   description String?
   date        DateTime
   location    String?
-  zipCode     String      @db.Char(5) // Zip code with exactly 5 characters
+  zipCode     String?      
   createdBy   User        @relation("UserCreatedEvents", fields: [createdById], references: [id])
   createdById Int
   group       Group       @relation(fields: [groupId], references: [id])
