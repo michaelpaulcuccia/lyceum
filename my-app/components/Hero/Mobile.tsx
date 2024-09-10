@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/legacy/image";
 import styled from "styled-components";
 import Hamburger from "./Hamburger";
@@ -33,7 +33,7 @@ const TextOverlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  padding: 20px 12px;
+  padding: 20px;
   width: 100%;
   color: white;
   z-index: 3; /* Text stays on top of everything */
@@ -42,7 +42,7 @@ const TextOverlay = styled.div`
 const TopContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
   h1 {
     font-size: 40px;
@@ -55,6 +55,12 @@ interface MobileProps {
 }
 
 export const Mobile: React.FC<MobileProps> = ({ image }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <Root>
       <DarkenedImage
@@ -68,9 +74,9 @@ export const Mobile: React.FC<MobileProps> = ({ image }) => {
         <TopContainer>
           {" "}
           <h1>Lyceum</h1>
-          <Hamburger />
-          {/* if hamburger opened, show component here... */}
+          <Hamburger isOpen={isOpen} toggle={toggleMenu} />
         </TopContainer>
+        {isOpen && <div style={{ color: "white" }}>Menu Content Goes Here</div>}
       </TextOverlay>
     </Root>
   );

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+// Hamburger.tsx
+import React from "react";
 import styled, { css } from "styled-components";
 
+// Hamburger button container
 const HamburgerButton = styled.button`
   position: relative;
-  width: 40px;
+  width: 30px;
   height: 20px;
   display: flex;
   flex-direction: column;
@@ -15,9 +17,10 @@ const HamburgerButton = styled.button`
   z-index: 10; /* Ensures it is above other content */
 `;
 
+// Common style for the lines
 const Line = styled.span<{ isOpen: boolean }>`
   width: 100%;
-  height: 3px;
+  height: 4px;
   background-color: white;
   transition: transform 0.3s ease, opacity 0.3s ease;
   position: absolute;
@@ -43,15 +46,14 @@ const Line = styled.span<{ isOpen: boolean }>`
   }
 `;
 
-const Hamburger: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface HamburgerProps {
+  isOpen: boolean;
+  toggle: () => void;
+}
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
-
+const Hamburger: React.FC<HamburgerProps> = ({ isOpen, toggle }) => {
   return (
-    <HamburgerButton onClick={handleClick}>
+    <HamburgerButton onClick={toggle}>
       <Line isOpen={isOpen} />
       <Line isOpen={isOpen} />
     </HamburgerButton>
