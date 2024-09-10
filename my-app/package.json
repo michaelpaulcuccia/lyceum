@@ -10,7 +10,6 @@
     "prisma:migrate": "prisma migrate dev"
   },
   "dependencies": {
-    "@next/font": "^14.2.9",
     "@prisma/client": "^5.19.1",
     "next": "14.2.8",
     "react": "^18",

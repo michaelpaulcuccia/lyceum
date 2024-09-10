@@ -1,24 +1,38 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { PrismaClient } from "@prisma/client";
 import { GroupType } from "./types/types";
 import styled from "styled-components";
-
-const prisma = new PrismaClient();
-
-async function getGroups(): Promise<GroupType[]> {
-  const groups = await prisma.group.findMany();
-  return groups;
-}
 
 const Test = styled.div`
   background: black;
   color: white;
 `;
 
-export default async function Home() {
-  const groups = await getGroups();
+export default function Home() {
+  const [groups, setGroups] = useState<GroupType[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchGroups = async () => {
+      try {
+        const response = await fetch("/api/groups");
+        if (!response.ok) {
+          throw new Error("Failed to fetch groups");
+        }
+        const data = await response.json();
+        setGroups(data);
+      } catch {
+        setError("error fetching data");
+      }
+    };
+
+    fetchGroups();
+  }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <main>
