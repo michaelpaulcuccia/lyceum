@@ -1,56 +1,53 @@
 "use client";
-import Image from "next/image";
 import styled from "styled-components";
+import Image from "next/image";
 
-const BackgroundContainer = styled.div`
+const FullPageContainer = styled.div`
   position: relative;
-  width: 100vw; // Full viewport width
-  height: 100vh; // Full viewport height
+  width: 100%;
+  height: 80vh;
   display: flex;
-  align-items: center; // Centers content vertically
-  justify-content: center; // Centers content horizontally
+  align-items: center;
+  justify-content: center;
+  margin: 10vh 0;
 `;
 
-const ImageWrapper = styled.div`
-  position: relative;
-  width: 100%; // Image fills the width of its container
-  height: 80vh; // Image height takes up 80% of the viewport height
-  margin: 10vh 0; // 10% whitespace on top and bottom
-  overflow: hidden; // Ensures the image doesn't overflow
+const DarkenedImage = styled(Image)`
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 `;
 
-const BackgroundImage = styled(Image)`
-  object-fit: cover; // Ensures the image covers its container
-  object-position: center; // Centers the image
-  width: 100%; // Full width
-  height: 100%; // Full height
+const DarkOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); /*  20% opacity */
+  z-index: 2; /* Overlay stays below the text */
+  pointer-events: none; /* Ensures overlay does not block text or other elements */
 `;
 
-const TextContainer = styled.div`
-  position: absolute; // Position the text on top of the image
-  z-index: 1; // Higher z-index to appear above the image
-  color: white; // Text color (change based on your design)
-  text-align: center; // Center-align text
-  top: 50%; // Vertical center
-  left: 50%; // Horizontal center
-  transform: translate(-50%, -50%); // Offset to center text
+const TextOverlay = styled.div`
+  position: absolute;
+  color: white;
+  z-index: 3; /* Text stays on top of everything */
 `;
 
-export default function HomePage() {
+export default function BackgroundImageWithText() {
   return (
-    <BackgroundContainer>
-      <ImageWrapper>
-        <BackgroundImage
-          src="/images/book_001.jpg" // Replace with your image path
-          alt="Background Image"
-          layout="fill" // Makes the image cover the entire container
-          priority // Optionally add priority to preload the image
-        />
-        <TextContainer>
-          <h1>Your Text Here</h1>
-          <p>This text is positioned on top of the background image.</p>
-        </TextContainer>
-      </ImageWrapper>
-    </BackgroundContainer>
+    <FullPageContainer>
+      <DarkenedImage
+        src="/images/reading_002.jpg"
+        alt="Background Image"
+        layout="fill" /* Important for full coverage */
+      />
+      <DarkOverlay />
+      <TextOverlay>
+        <h1>Your Text Here</h1>
+      </TextOverlay>
+    </FullPageContainer>
   );
 }
