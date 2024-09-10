@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { mobileBreakpoint } from "../../constants";
 import Desktop from "./Desktop";
+import Mobile from "./Mobile";
 
 interface MainProps {
   showSlider: boolean;
@@ -28,7 +29,7 @@ const Main: React.FC<MainProps> = ({ showSlider, image }) => {
         <Desktop showSlider={showSlider} image={image} />
       </DesktopWrapper>
       <MobileWrapper>
-        <div>hello world</div>
+        <Mobile image={image} />
       </MobileWrapper>
     </>
   );

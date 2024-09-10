@@ -68,7 +68,6 @@ interface DesktopProps {
 }
 
 export const Desktop: React.FC<DesktopProps> = ({ showSlider, image }) => {
-  console.log(image);
   return (
     <FullPageContainer>
       <DarkenedImage
