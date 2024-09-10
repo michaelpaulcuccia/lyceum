@@ -1,27 +1,7 @@
-"use client";
-import styled, { keyframes } from "styled-components";
+import React from "react";
 import Image from "next/image";
-
-const slideUp = keyframes`
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`;
-
-// Animation for fading in text
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`;
+import styled from "styled-components";
+import SlideUp from "./SlideUp";
 
 const FullPageContainer = styled.div`
   position: relative;
@@ -61,53 +41,6 @@ const TextOverlay = styled.div`
   z-index: 3; /* Text stays on top of everything */
 `;
 
-const SlideUpContainer = styled.div`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 60px;
-  background: transparent;
-  animation: ${slideUp} 1s ease-out forwards;
-  z-index: 4;
-`;
-
-const LeftContent = styled.div`
-  color: white;
-  h1 {
-    margin-bottom: 60px;
-    font-size: 56px;
-    line-height: 56px;
-  }
-`;
-
-const RightContent = styled.div`
-  color: white;
-  animation: ${fadeIn} 1s ease-out 1s forwards;
-
-  div {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 40px;
-    border: 2px solid white;
-    border-radius: 50px;
-    background-color: transparent;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-
-    &:hover {
-      background-color: white;
-      color: black;
-    }
-  }
-`;
-
 const TopTextNav = styled.nav`
   display: flex;
   align-items: center;
@@ -129,7 +62,12 @@ const LinkWrap = styled.div`
   }
 `;
 
-export default function BackgroundImageWithText() {
+interface DesktopProps {
+  showSlider?: boolean;
+}
+
+export const Desktop: React.FC<DesktopProps> = ({ showSlider }) => {
+  console.log(showSlider);
   return (
     <FullPageContainer>
       <DarkenedImage
@@ -156,17 +94,9 @@ export default function BackgroundImageWithText() {
           </LinkWrap>
         </TopTextNav>
       </TextOverlay>
-      <SlideUpContainer>
-        <LeftContent>
-          <h1>
-            LET'S GET LOST <br /> AND READ TOGETHER.
-          </h1>
-        </LeftContent>
-        <RightContent>
-          {/* Content for the right side */}
-          <div>JOIN OUR CLUB</div>
-        </RightContent>
-      </SlideUpContainer>
+      {showSlider && <SlideUp />}
     </FullPageContainer>
   );
-}
+};
+
+export default Desktop;
