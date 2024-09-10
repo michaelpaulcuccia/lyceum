@@ -64,16 +64,18 @@ const LinkWrap = styled.div`
 
 interface DesktopProps {
   showSlider?: boolean;
+  image?: string;
 }
 
-export const Desktop: React.FC<DesktopProps> = ({ showSlider }) => {
-  console.log(showSlider);
+export const Desktop: React.FC<DesktopProps> = ({ showSlider, image }) => {
+  console.log(image);
   return (
     <FullPageContainer>
       <DarkenedImage
-        src="/images/library_001.jpg"
+        src={image || "/images/book_001.jpg"}
         alt="Background Image"
         layout="fill" /* Important for full coverage */
+        priority={true}
       />
       <DarkOverlay />
       <TextOverlay>
