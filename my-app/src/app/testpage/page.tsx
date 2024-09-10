@@ -1,6 +1,27 @@
 "use client";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Image from "next/image";
+
+const slideUp = keyframes`
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
+// Animation for fading in text
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 const FullPageContainer = styled.div`
   position: relative;
@@ -38,6 +59,28 @@ const TextOverlay = styled.div`
   width: 100%;
   color: white;
   z-index: 3; /* Text stays on top of everything */
+`;
+
+const SlideUpContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: transparent;
+  animation: ${slideUp} 1s ease-out forwards;
+  z-index: 4;
+`;
+
+const LeftContent = styled.div`
+  color: white;
+`;
+
+const RightContent = styled.div`
+  color: white;
+  animation: ${fadeIn} 1s ease-out 1s forwards; /* Delay text appearance */
 `;
 
 const TopTextNav = styled.nav`
@@ -88,6 +131,16 @@ export default function BackgroundImageWithText() {
           </LinkWrap>
         </TopTextNav>
       </TextOverlay>
+      <SlideUpContainer>
+        <LeftContent>
+          {/* Content for the left side */}
+          Left Content
+        </LeftContent>
+        <RightContent>
+          {/* Content for the right side */}
+          Right Content
+        </RightContent>
+      </SlideUpContainer>
     </FullPageContainer>
   );
 }
