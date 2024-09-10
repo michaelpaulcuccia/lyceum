@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function GET(request, { params }) {
+export async function GET() {
   const groups = await prisma.group.findMany();
 
   return NextResponse.json(groups);
