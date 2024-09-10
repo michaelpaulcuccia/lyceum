@@ -68,7 +68,7 @@ const SlideUpContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 20px 60px;
   background: transparent;
   animation: ${slideUp} 1s ease-out forwards;
   z-index: 4;
@@ -76,11 +76,36 @@ const SlideUpContainer = styled.div`
 
 const LeftContent = styled.div`
   color: white;
+  h1 {
+    margin-bottom: 60px;
+    font-size: 56px;
+    line-height: 56px;
+  }
 `;
 
 const RightContent = styled.div`
   color: white;
-  animation: ${fadeIn} 1s ease-out 1s forwards; /* Delay text appearance */
+  animation: ${fadeIn} 1s ease-out 1s forwards;
+
+  div {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px;
+    border: 2px solid white;
+    border-radius: 50px;
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+  }
 `;
 
 const TopTextNav = styled.nav`
@@ -133,12 +158,13 @@ export default function BackgroundImageWithText() {
       </TextOverlay>
       <SlideUpContainer>
         <LeftContent>
-          {/* Content for the left side */}
-          Left Content
+          <h1>
+            LET'S GET LOST <br /> AND READ TOGETHER.
+          </h1>
         </LeftContent>
         <RightContent>
           {/* Content for the right side */}
-          Right Content
+          <div>JOIN OUR CLUB</div>
         </RightContent>
       </SlideUpContainer>
     </FullPageContainer>
