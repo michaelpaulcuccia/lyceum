@@ -30,7 +30,7 @@ const Line = styled.span<{ isOpen: boolean }>`
     ${({ isOpen }) =>
       isOpen &&
       css`
-        transform: rotate(45deg);
+        transform: rotate(315deg);
         top: 8px;
       `}
   }
@@ -40,7 +40,7 @@ const Line = styled.span<{ isOpen: boolean }>`
     ${({ isOpen }) =>
       isOpen &&
       css`
-        transform: rotate(-45deg);
+        transform: rotate(-315deg);
         top: 8px;
       `}
   }
