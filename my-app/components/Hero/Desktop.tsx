@@ -69,9 +69,14 @@ const LinkWrap = styled.div`
 interface DesktopProps {
   showSlider?: boolean;
   image?: string;
+  sliderText?: string;
 }
 
-export const Desktop: React.FC<DesktopProps> = ({ showSlider, image }) => {
+export const Desktop: React.FC<DesktopProps> = ({
+  showSlider,
+  image,
+  sliderText,
+}) => {
   const [, { pages }] = heroData;
 
   return (
@@ -109,7 +114,11 @@ export const Desktop: React.FC<DesktopProps> = ({ showSlider, image }) => {
           </LinkWrap>
         </TopTextNav>
       </TextOverlay>
-      {showSlider && <SlideUp />}
+      {showSlider && (
+        <SlideUp
+          sliderText={sliderText || "LET'S GET LOST AND READ TOGETHER"}
+        />
+      )}
     </FullPageContainer>
   );
 };

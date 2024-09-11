@@ -7,6 +7,7 @@ import Mobile from "./Mobile";
 interface MainProps {
   showSlider: boolean;
   image: string;
+  sliderText: string;
 }
 
 const DesktopWrapper = styled.span`
@@ -22,11 +23,15 @@ const MobileWrapper = styled.span`
   }
 `;
 
-const Main: React.FC<MainProps> = ({ showSlider, image }) => {
+const Main: React.FC<MainProps> = ({ showSlider, image, sliderText }) => {
   return (
     <>
       <DesktopWrapper>
-        <Desktop showSlider={showSlider} image={image} />
+        <Desktop
+          showSlider={showSlider}
+          image={image}
+          sliderText={sliderText}
+        />
       </DesktopWrapper>
       <MobileWrapper>
         <Mobile image={image} />

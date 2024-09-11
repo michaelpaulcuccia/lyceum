@@ -2,6 +2,11 @@ import React from "react";
 import Link from "next/link";
 import styled, { keyframes } from "styled-components";
 
+// Define the prop types
+interface SlideUpProps {
+  sliderText: string; // `sliderText` prop should be a string
+}
+
 const slideUp = keyframes`
   from {
     transform: translateY(100%);
@@ -41,6 +46,7 @@ const LeftContent = styled.div`
     margin-bottom: 60px;
     font-size: 56px;
     line-height: 56px;
+    width: 60%;
   }
 `;
 
@@ -69,17 +75,17 @@ const RightContent = styled.div`
   }
 `;
 
-export default function SlideUp() {
+const SlideUp: React.FC<SlideUpProps> = ({ sliderText }) => {
   return (
     <SlideUpContainer>
       <LeftContent>
-        <h1>
-          LET'S GET LOST <br /> AND READ TOGETHER.
-        </h1>
+        <h1>{sliderText}</h1>
       </LeftContent>
       <RightContent>
         <Link href="login">JOIN OUR CLUB</Link>
       </RightContent>
     </SlideUpContainer>
   );
-}
+};
+
+export default SlideUp;

@@ -5,7 +5,7 @@ import { Hero } from "../../components/Hero";
 export default function Home() {
   return (
     <>
-      <Hero showSlider image="/images/library_001.jpg" />
+      <Hero showSlider image="/images/library_001.jpg" sliderText="" />
     </>
   );
 }
