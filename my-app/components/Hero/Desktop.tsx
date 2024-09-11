@@ -1,7 +1,10 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/legacy/image";
 import styled from "styled-components";
 import SlideUp from "./SlideUp";
+import { FaInstagram } from "react-icons/fa6";
+import { FiYoutube } from "react-icons/fi";
 
 const FullPageContainer = styled.div`
   position: relative;
@@ -55,7 +58,7 @@ const TopTextNav = styled.nav`
 const LinkWrap = styled.div`
   display: flex;
 
-  div {
+  a {
     font-size: 20px;
     line-height: 20px;
     margin-right: 18px;
@@ -79,19 +82,25 @@ export const Desktop: React.FC<DesktopProps> = ({ showSlider, image }) => {
       <DarkOverlay />
       <TextOverlay>
         <TopTextNav>
-          <h1>Lyceum</h1>
+          <Link href="/">
+            <h1>Lyceum</h1>
+          </Link>
           <LinkWrap>
-            <div>Who</div>
-            <div>What</div>
-            <div>When</div>
-            <div>Where</div>
+            <Link href="/who">Who</Link>
+            <Link href="/what">What</Link>
+            <Link href="/when">When</Link>
+            <Link href="/where">Where</Link>
           </LinkWrap>
           <LinkWrap>
-            <div>Login</div>
+            <Link href="/login">Login</Link>
           </LinkWrap>
           <LinkWrap>
-            <div>IG</div>
-            <div>Tube</div>
+            <Link href="https://www.instagram.com/" target="_blank">
+              <FaInstagram color="white" />
+            </Link>
+            <Link href="https://www.youtube.com/" target="_blank">
+              <FiYoutube color="white" />
+            </Link>
           </LinkWrap>
         </TopTextNav>
       </TextOverlay>

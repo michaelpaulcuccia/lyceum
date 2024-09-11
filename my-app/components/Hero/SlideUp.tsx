@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import styled, { keyframes } from "styled-components";
 
 const slideUp = keyframes`
@@ -77,7 +78,7 @@ export default function SlideUp() {
         </h1>
       </LeftContent>
       <RightContent>
-        <div>JOIN OUR CLUB</div>
+        <Link href="login">JOIN OUR CLUB</Link>
       </RightContent>
     </SlideUpContainer>
   );
