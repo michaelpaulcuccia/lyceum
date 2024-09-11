@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/legacy/image";
 import styled from "styled-components";
 import Hamburger from "./Hamburger";
+import MobileMenu from "./MobileMenu";
 
 const Root = styled.div`
   position: relative;
@@ -76,8 +77,8 @@ export const Mobile: React.FC<MobileProps> = ({ image }) => {
           <h1>Lyceum</h1>
           <Hamburger isOpen={isOpen} toggle={toggleMenu} />
         </TopContainer>
-        {isOpen && <div style={{ color: "white" }}>Menu Content Goes Here</div>}
       </TextOverlay>
+      {isOpen && <MobileMenu />}
     </Root>
   );
 };

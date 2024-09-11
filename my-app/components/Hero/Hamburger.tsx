@@ -1,8 +1,6 @@
-// Hamburger.tsx
 import React from "react";
 import styled, { css } from "styled-components";
 
-// Hamburger button container
 const HamburgerButton = styled.button`
   position: relative;
   width: 30px;
@@ -17,7 +15,6 @@ const HamburgerButton = styled.button`
   z-index: 10; /* Ensures it is above other content */
 `;
 
-// Common style for the lines
 const Line = styled.span<{ isOpen: boolean }>`
   width: 100%;
   height: 4px;
