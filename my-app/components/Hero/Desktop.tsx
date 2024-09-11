@@ -5,6 +5,7 @@ import styled from "styled-components";
 import SlideUp from "./SlideUp";
 import { FaInstagram } from "react-icons/fa6";
 import { FiYoutube } from "react-icons/fi";
+import { heroData } from "../../constants";
 
 const FullPageContainer = styled.div`
   position: relative;
@@ -71,6 +72,8 @@ interface DesktopProps {
 }
 
 export const Desktop: React.FC<DesktopProps> = ({ showSlider, image }) => {
+  const [, { pages }] = heroData;
+
   return (
     <FullPageContainer>
       <DarkenedImage
@@ -86,10 +89,12 @@ export const Desktop: React.FC<DesktopProps> = ({ showSlider, image }) => {
             <h1>Lyceum</h1>
           </Link>
           <LinkWrap>
-            <Link href="/who">Who</Link>
-            <Link href="/what">What</Link>
-            <Link href="/when">When</Link>
-            <Link href="/where">Where</Link>
+            {pages !== undefined &&
+              pages.map((item, i) => (
+                <Link key={i} href={item.URL}>
+                  {item.pageTitle}
+                </Link>
+              ))}
           </LinkWrap>
           <LinkWrap>
             <Link href="/login">Login</Link>

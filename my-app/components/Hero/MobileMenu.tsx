@@ -3,6 +3,7 @@ import Link from "next/link";
 import styled, { keyframes } from "styled-components";
 import { FaInstagram } from "react-icons/fa6";
 import { FiYoutube } from "react-icons/fi";
+import { heroData } from "../../constants";
 
 const slideUp = keyframes`
   from {
@@ -31,20 +32,15 @@ const SlideUpContainer = styled.div`
 `;
 
 export default function MobileMenu() {
+  const [, { pages }] = heroData;
   return (
     <SlideUpContainer>
-      <Link href="/who" style={{ marginBottom: "22px" }}>
-        Who
-      </Link>
-      <Link href="/what" style={{ marginBottom: "22px" }}>
-        What
-      </Link>
-      <Link href="/when" style={{ marginBottom: "22px" }}>
-        When
-      </Link>
-      <Link href="/where" style={{ marginBottom: "22px" }}>
-        Where
-      </Link>
+      {pages !== undefined &&
+        pages.map((item, i) => (
+          <Link key={i} href={item.URL} style={{ marginBottom: "22px" }}>
+            {item.pageTitle}
+          </Link>
+        ))}
       <br />
       <Link href="/login" style={{ marginBottom: "22px" }}>
         Login
