@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/legacy/image";
+import Link from "next/link";
 import styled from "styled-components";
 import MobileHamburger from "./MobileHamburger";
 import MobileMenu from "./MobileMenu";
@@ -73,8 +74,9 @@ export const Mobile: React.FC<MobileProps> = ({ image }) => {
       <DarkOverlay />
       <TextOverlay>
         <TopContainer>
-          {" "}
-          <h1>Lyceum</h1>
+          <Link href="/">
+            <h1>Lyceum</h1>
+          </Link>
           <MobileHamburger isOpen={isOpen} toggle={toggleMenu} />
         </TopContainer>
       </TextOverlay>

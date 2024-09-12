@@ -80,7 +80,6 @@ const DesktopSlideUp: React.FC<SlideUpProps> = ({
   sliderText,
   showJoinButton,
 }) => {
-  console.log(showJoinButton);
   return (
     <SlideUpContainer>
       <LeftContent>

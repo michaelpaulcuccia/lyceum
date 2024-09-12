@@ -23,7 +23,7 @@ export default function Pages() {
       if (thisPageData.length > 0) {
         setData(thisPageData[0]);
         const handleRandomRes = handleRandom(thisPageData[0]);
-        console.log(handleRandomRes);
+
         if (handleRandomRes) {
           setRandomHeadline(handleRandomRes);
         }
