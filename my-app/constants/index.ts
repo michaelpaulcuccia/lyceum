@@ -11,6 +11,11 @@ export const heroData = [
       "Pages Turning, Minds Growing",
       "Open Books, Open Minds",
       "Read, Reflect, Connect",
+      "Stories That Connect Us All",
+      "Discover, Share, and Read On",
+      "Turn Pages, Start Conversations",
+      "A Chapter a Day, Together",
+      "Explore Worlds, One Book at a Time",
     ],
   },
   {
