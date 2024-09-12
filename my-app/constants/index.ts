@@ -65,6 +65,21 @@ export const heroData = [
       },
     ],
   },
+  {
+    login: [
+      {
+        pageTitle: "Login",
+        URL: "/login",
+        directory: "/images/book_003.jpg",
+        headlines: [
+          "Unfold New Worlds Together",
+          "A World of Books Awaits",
+          "Meet, Read, and Discover",
+          "Journey Through the Stacks",
+        ],
+      },
+    ],
+  },
 ];
 
 /*

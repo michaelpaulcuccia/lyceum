@@ -15,11 +15,11 @@ export default function Pages() {
   const [randomHeadline, setRandomHeadline] = useState<string>("");
   const pathname = usePathname();
 
-  const [, { pages }] = heroData;
+  const [, , { login }] = heroData;
 
   useEffect(() => {
-    if (pages !== undefined) {
-      const thisPageData = pages.filter((item) => item.URL === pathname);
+    if (login !== undefined) {
+      const thisPageData = login.filter((item) => item.URL === pathname);
       if (thisPageData.length > 0) {
         setData(thisPageData[0]);
         const handleRandomRes = handleRandom(thisPageData[0]);
@@ -29,7 +29,7 @@ export default function Pages() {
         }
       }
     }
-  }, [pathname, pages]);
+  }, [pathname, login]);
 
   return (
     <>
