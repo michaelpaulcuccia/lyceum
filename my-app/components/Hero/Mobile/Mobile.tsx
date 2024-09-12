@@ -57,10 +57,10 @@ interface MobileProps {
 }
 
 export const Mobile: React.FC<MobileProps> = ({ image }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isopen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(!isopen);
   };
 
   return (
@@ -77,10 +77,10 @@ export const Mobile: React.FC<MobileProps> = ({ image }) => {
           <Link href="/">
             <h1>Lyceum</h1>
           </Link>
-          <MobileHamburger isOpen={isOpen} toggle={toggleMenu} />
+          <MobileHamburger isOpen={isopen} toggle={toggleMenu} />
         </TopContainer>
       </TextOverlay>
-      {isOpen && <MobileMenu />}
+      {isopen && <MobileMenu />}
     </Root>
   );
 };

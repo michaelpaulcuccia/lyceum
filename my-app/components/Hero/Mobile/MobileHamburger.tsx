@@ -15,7 +15,7 @@ const HamburgerButton = styled.button`
   z-index: 10; /* Ensures it is above other content */
 `;
 
-const Line = styled.span<{ isOpen: boolean }>`
+const Line = styled.span<{ isopen: boolean }>`
   width: 100%;
   height: 4px;
   background-color: white;
@@ -24,8 +24,8 @@ const Line = styled.span<{ isOpen: boolean }>`
 
   &:nth-child(1) {
     top: 0;
-    ${({ isOpen }) =>
-      isOpen &&
+    ${({ isopen }) =>
+      isopen &&
       css`
         transform: rotate(315deg);
         top: 8px;
@@ -34,8 +34,8 @@ const Line = styled.span<{ isOpen: boolean }>`
 
   &:nth-child(2) {
     top: 16px;
-    ${({ isOpen }) =>
-      isOpen &&
+    ${({ isopen }) =>
+      isopen &&
       css`
         transform: rotate(-315deg);
         top: 8px;
@@ -44,18 +44,18 @@ const Line = styled.span<{ isOpen: boolean }>`
 `;
 
 interface MobileHamburgerProps {
-  isOpen: boolean;
+  isopen: boolean;
   toggle: () => void;
 }
 
 const MobileHamburger: React.FC<MobileHamburgerProps> = ({
-  isOpen,
+  isopen,
   toggle,
 }) => {
   return (
     <HamburgerButton onClick={toggle}>
-      <Line isOpen={isOpen} />
-      <Line isOpen={isOpen} />
+      <Line isopen={isopen} />
+      <Line isopen={isopen} />
     </HamburgerButton>
   );
 };
@@ -63,7 +63,7 @@ const MobileHamburger: React.FC<MobileHamburgerProps> = ({
 export default MobileHamburger;
 
 /*
-Lift the State Up: Move the isOpen state from the Hamburger component to the parent component (Mobile) so that it can control whether the menu is open or closed.
+Lift the State Up: Move the isopen state from the Hamburger component to the parent component (Mobile) so that it can control whether the menu is open or closed.
 
 Pass State and Props to the Hamburger Component: Pass down the state and a function to toggle the state to the Hamburger component.
 

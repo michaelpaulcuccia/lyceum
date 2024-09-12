@@ -86,11 +86,3 @@ export const heroData = [
     ],
   },
 ];
-
-/*
-const test = heroData[0].headlines;
-let randomHeadline;
-const random = Math.floor(Math.random() * test.length);
-randomHeadline = test[random];
-console.log(randomHeadline);
-*/
