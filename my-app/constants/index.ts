@@ -30,7 +30,7 @@ export const heroData = [
       {
         pageTitle: "What",
         URL: "/what",
-        directory: "/images/library_001.jpg",
+        directory: "/images/reading_002.jpg",
         headlines: [
           "Journey Through the Stacks",
           "Find Inspiration in Every Aisle",
