@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/legacy/image";
 import styled from "styled-components";
-import SlideUp from "./SlideUp";
+import DesktopSlideUp from "./DesktopSlideUp";
 import { FaInstagram } from "react-icons/fa6";
 import { FiYoutube } from "react-icons/fi";
 import { heroData } from "../../constants";
@@ -70,12 +70,14 @@ interface DesktopProps {
   showSlider?: boolean;
   image?: string;
   sliderText?: string;
+  showJoinButton?: boolean;
 }
 
 export const Desktop: React.FC<DesktopProps> = ({
   showSlider,
   image,
   sliderText,
+  showJoinButton,
 }) => {
   const [, { pages }] = heroData;
 
@@ -115,8 +117,9 @@ export const Desktop: React.FC<DesktopProps> = ({
         </TopTextNav>
       </TextOverlay>
       {showSlider && (
-        <SlideUp
+        <DesktopSlideUp
           sliderText={sliderText || "LET'S GET LOST AND READ TOGETHER"}
+          showJoinButton={showJoinButton || false}
         />
       )}
     </FullPageContainer>

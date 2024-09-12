@@ -39,7 +39,12 @@ export default function Pages() {
   return (
     <>
       {data && (
-        <Hero showSlider image={data.directory} sliderText={randomHeadline} />
+        <Hero
+          showSlider
+          image={data.directory}
+          sliderText={randomHeadline}
+          showJoinButton={false}
+        />
       )}
     </>
   );

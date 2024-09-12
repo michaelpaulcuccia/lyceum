@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/legacy/image";
 import styled from "styled-components";
-import Hamburger from "./Hamburger";
+import MobileHamburger from "./MobileHamburger";
 import MobileMenu from "./MobileMenu";
 
 const Root = styled.div`
@@ -75,7 +75,7 @@ export const Mobile: React.FC<MobileProps> = ({ image }) => {
         <TopContainer>
           {" "}
           <h1>Lyceum</h1>
-          <Hamburger isOpen={isOpen} toggle={toggleMenu} />
+          <MobileHamburger isOpen={isOpen} toggle={toggleMenu} />
         </TopContainer>
       </TextOverlay>
       {isOpen && <MobileMenu />}

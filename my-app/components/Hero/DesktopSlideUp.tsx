@@ -4,7 +4,8 @@ import styled, { keyframes } from "styled-components";
 
 // Define the prop types
 interface SlideUpProps {
-  sliderText: string; // `sliderText` prop should be a string
+  sliderText: string;
+  showJoinButton: boolean;
 }
 
 const slideUp = keyframes`
@@ -75,17 +76,25 @@ const RightContent = styled.div`
   }
 `;
 
-const SlideUp: React.FC<SlideUpProps> = ({ sliderText }) => {
+const DesktopSlideUp: React.FC<SlideUpProps> = ({
+  sliderText,
+  showJoinButton,
+}) => {
+  console.log(showJoinButton);
   return (
     <SlideUpContainer>
       <LeftContent>
         <h1>{sliderText}</h1>
       </LeftContent>
       <RightContent>
-        <Link href="login">JOIN OUR CLUB</Link>
+        {showJoinButton && (
+          <Link href="login">
+            <div>JOIN OUR CLUB</div>
+          </Link>
+        )}
       </RightContent>
     </SlideUpContainer>
   );
 };
 
-export default SlideUp;
+export default DesktopSlideUp;

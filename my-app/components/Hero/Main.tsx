@@ -8,6 +8,7 @@ interface MainProps {
   showSlider: boolean;
   image: string;
   sliderText: string;
+  showJoinButton?: boolean;
 }
 
 const DesktopWrapper = styled.span`
@@ -23,7 +24,12 @@ const MobileWrapper = styled.span`
   }
 `;
 
-const Main: React.FC<MainProps> = ({ showSlider, image, sliderText }) => {
+const Main: React.FC<MainProps> = ({
+  showSlider,
+  image,
+  sliderText,
+  showJoinButton,
+}) => {
   return (
     <>
       <DesktopWrapper>
@@ -31,6 +37,7 @@ const Main: React.FC<MainProps> = ({ showSlider, image, sliderText }) => {
           showSlider={showSlider}
           image={image}
           sliderText={sliderText}
+          showJoinButton={showJoinButton}
         />
       </DesktopWrapper>
       <MobileWrapper>

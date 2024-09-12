@@ -43,12 +43,15 @@ const Line = styled.span<{ isOpen: boolean }>`
   }
 `;
 
-interface HamburgerProps {
+interface MobileHamburgerProps {
   isOpen: boolean;
   toggle: () => void;
 }
 
-const Hamburger: React.FC<HamburgerProps> = ({ isOpen, toggle }) => {
+const MobileHamburger: React.FC<MobileHamburgerProps> = ({
+  isOpen,
+  toggle,
+}) => {
   return (
     <HamburgerButton onClick={toggle}>
       <Line isOpen={isOpen} />
@@ -57,7 +60,7 @@ const Hamburger: React.FC<HamburgerProps> = ({ isOpen, toggle }) => {
   );
 };
 
-export default Hamburger;
+export default MobileHamburger;
 
 /*
 Lift the State Up: Move the isOpen state from the Hamburger component to the parent component (Mobile) so that it can control whether the menu is open or closed.
