@@ -77,7 +77,7 @@ export const Mobile: React.FC<MobileProps> = ({ image }) => {
           <Link href="/">
             <h1>Lyceum</h1>
           </Link>
-          <MobileHamburger isOpen={isopen} toggle={toggleMenu} />
+          <MobileHamburger isopen={isopen} toggle={toggleMenu} />
         </TopContainer>
       </TextOverlay>
       {isopen && <MobileMenu />}
