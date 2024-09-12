@@ -38,7 +38,7 @@ export default function Pages() {
           showSlider
           image={data.directory}
           sliderText={randomHeadline}
-          showJoinButton={true}
+          showJoinButton={false}
         />
       )}
     </>
