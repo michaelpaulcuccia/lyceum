@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { mobileBreakpoint } from "../../constants";
-import Desktop from "./Desktop";
-import Mobile from "./Mobile";
+import Desktop from "./Desktop/Desktop";
+import Mobile from "./Mobile/Mobile";
 
 interface MainProps {
   showSlider: boolean;

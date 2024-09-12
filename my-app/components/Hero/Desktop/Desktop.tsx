@@ -5,7 +5,7 @@ import styled from "styled-components";
 import DesktopSlideUp from "./DesktopSlideUp";
 import { FaInstagram } from "react-icons/fa6";
 import { FiYoutube } from "react-icons/fi";
-import { heroData } from "../../constants";
+import { heroData } from "../../../constants";
 
 const FullPageContainer = styled.div`
   position: relative;

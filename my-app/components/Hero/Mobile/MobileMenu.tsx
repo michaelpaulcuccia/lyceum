@@ -3,7 +3,7 @@ import Link from "next/link";
 import styled, { keyframes } from "styled-components";
 import { FaInstagram } from "react-icons/fa6";
 import { FiYoutube } from "react-icons/fi";
-import { heroData } from "../../constants";
+import { heroData } from "../../../constants";
 
 const slideUp = keyframes`
   from {
