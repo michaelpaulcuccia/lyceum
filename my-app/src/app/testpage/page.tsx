@@ -1,23 +1,40 @@
 "use client";
-import React from "react";
-import useSWR from "swr";
+import React, { useEffect, useState } from "react";
 import { GroupType } from "../types/types";
 import GroupForm from "../../../components/GroupForm";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
 export default function Page() {
-  const { data: groups, error } = useSWR<GroupType[]>("/api/groups", fetcher);
+  const [groups, setGroups] = useState<GroupType[]>([]);
+  const [loading, setLoading] = useState<boolean>(true); // Add loading state
+  const [error, setError] = useState<string | null>(null);
 
-  if (error) {
-    return <div>Error: Failed to load groups</div>;
-  }
+  useEffect(() => {
+    const fetchGroups = async () => {
+      try {
+        const response = await fetch("/api/groups");
+        if (!response.ok) {
+          throw new Error("Failed to fetch groups");
+        }
+        const data = await response.json();
+        setGroups(data);
+      } catch {
+        setError("Error fetching data");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (!groups) {
+    fetchGroups();
+  }, [groups]);
+
+  if (loading) {
     return <div>Loading...</div>;
   }
 
-  console.log(groups);
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <main>
       <p>Group Data from API:</p>
@@ -29,10 +46,7 @@ export default function Page() {
           <p>{item.zipCode}</p>
         </div>
       ))}
-      <div>
-        <h1>Add New Group</h1>
-        <GroupForm />
-      </div>
+      <GroupForm />
     </main>
   );
 }
