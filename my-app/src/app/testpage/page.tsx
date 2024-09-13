@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { GroupType } from "../types/types";
+import GroupForm from "../../../components/GroupForm";
 
 export default function Page() {
   const [groups, setGroups] = useState<GroupType[]>([]);
@@ -45,6 +46,10 @@ export default function Page() {
           <p>{item.zipCode}</p>
         </div>
       ))}
+      <div>
+        <h1>Add New Group</h1>
+        <GroupForm />
+      </div>
     </main>
   );
 }
