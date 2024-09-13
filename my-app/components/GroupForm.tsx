@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { mutate } from "swr";
 
 const GroupForm = () => {
   const [formData, setFormData] = useState({
@@ -31,6 +32,7 @@ const GroupForm = () => {
     if (response.ok) {
       alert("Group added successfully!");
       setFormData({ name: "", description: "", location: "", zipCode: "" }); // Reset form
+      mutate("/api/groups"); // Revalidate SWR cache to fetch updated groups
     } else {
       alert("Failed to add group.");
     }
