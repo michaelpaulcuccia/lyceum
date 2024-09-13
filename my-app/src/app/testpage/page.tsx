@@ -17,6 +17,7 @@ export default function Page() {
     return <div>Loading...</div>;
   }
 
+  console.log(groups);
   return (
     <main>
       <p>Group Data from API:</p>
